@@ -1,41 +1,41 @@
-#include "List.h"
+#include "Queue.h"
 
-List::List(int size_of_data) {
+Queue::Queue(int size_of_data) {
 	head = 1;
 	tail = 0;
 	data = new Square[size_of_data];
 	MAX_SIZE = size_of_data;
 }
-List::~List() {
-	delete []data;
+Queue::~Queue() {
+	delete[]data;
 }
-int List::AddOne(int x) {
+int Queue::AddOne(int x) {
 	return ((1 + x) % MAX_SIZE);
 }
-void List::MakeEmpty(void) {
+void Queue::MakeEmpty(void) {
 	head = 1;
 	tail = 0;
 }
-int List::IsEmpty(void) {
+int Queue::IsEmpty(void) {
 	return (AddOne(tail) == head);
 }
-Square List::Front(void) {
+Square Queue::Front(void) {
 	if (IsEmpty()) {
-		cout << "Error: LIST EMPTY\n";
+		cout << "Error: QUEUE EMPTY\n";
 		exit(1);
 	}
 	return (data[head]);
 }
-void List::EnQueue(Square item) {
+void Queue::EnQueue(Square item) {
 	if (AddOne(AddOne(tail)) == head) {
-		cout << "Error: LIST IS FULL\n";
+		cout << "Error: QUEUE IS FULL\n";
 	}
 	tail = AddOne(tail);
 	data[tail] = item;
 }
-Square List::DeQueue(void) {
+Square Queue::DeQueue(void) {
 	if (IsEmpty()) {
-		cout << "Error: LIST EMPTY\n";
+		cout << "Error: QUEUE EMPTY\n";
 		exit(1);
 	}
 	Square item = data[head];
