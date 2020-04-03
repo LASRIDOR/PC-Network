@@ -1,6 +1,6 @@
 
-#ifndef __QUEUE_H
-#define __QUEUE_H
+#ifndef __LIST_H
+#define __LIST_H
 
 #include <iostream>
 #include <stdlib.h>
@@ -10,15 +10,15 @@ using namespace std;
 
 #include "Square.h"
 
-class Queue {
+class List {
 private:
 	Square *data;
 	int head, tail;
 	int MAX_SIZE;
 	int AddOne(int x);
 public:
-	Queue(int size_of_data);
-	~Queue();
+	List(int size_of_data);
+	~List();
 	void MakeEmpty(void);
 	int IsEmpty(void);
 	Square Front(void);
@@ -26,4 +26,4 @@ public:
 	Square DeQueue(void);
 };
 
-#endif // !__QUEUE_H
+#endif // !__LIST_H
