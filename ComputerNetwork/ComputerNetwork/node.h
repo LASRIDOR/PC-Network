@@ -7,6 +7,7 @@ using namespace std;
 #pragma warning (disable: 4996)
 
 class Node {
+	friend class List;
 public:
 	Node() = default;
 	Node(Square square,Node* next);
