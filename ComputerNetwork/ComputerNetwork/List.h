@@ -4,6 +4,7 @@
 
 #include "node.h"
 
+typedef int Type;
 
 class List {
 private:
@@ -11,12 +12,13 @@ private:
     Node* tail;
 
 public:
-    void addToTail(Node* new_item);
-    bool deleteItem(const char *item_name);
+    void addToTail(Node* NewNodeToAdd);
+    bool DeleteNodeFromList(Type TypeToDeleteFromList);
     bool isEmpty()   const;
     void printList() const;
     Node *getHead();
-    Node *findItem(const char *item_name);
+    Node *findNode(Type TypeToFind);
+    bool TypeIsInList(const Node& NewNode);
 public:
 
     List();
@@ -24,9 +26,6 @@ public:
     List(const List& other);
     List(List&& other);
     const List& operator=(const List& other);
-
-private:
-    bool itemIsInList(const Node& new_item);
 
 };
 

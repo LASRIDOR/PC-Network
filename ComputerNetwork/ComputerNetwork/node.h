@@ -19,6 +19,7 @@ public:
 	int getNum();
 	Node* GetNext();
 
+	void printNodeNum();
 private:
 	int m_num;
 	Node* next;

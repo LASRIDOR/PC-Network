@@ -21,3 +21,9 @@ int Node::getNum() {
 Node* Node::GetNext() {
 	return this->next;
 }
+
+void Node::printNodeNum() {
+	cout << this->m_num << " ";
+	if(this->next != nullptr)
+	this->next->printNodeNum();
+}

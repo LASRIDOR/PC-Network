@@ -8,11 +8,11 @@ using namespace std;
 
 #pragma warning (disable: 4996)
 
-#include "Square.h"
+typedef int Type;
 
 class Queue {
 private:
-	Square* data;
+	Type* data;
 	int head, tail;
 	int MAX_SIZE;
 	int AddOne(int x);
@@ -21,9 +21,9 @@ public:
 	~Queue();
 	void MakeEmpty(void);
 	int IsEmpty(void);
-	Square Front(void);
-	void EnQueue(Square item);
-	Square DeQueue(void);
+	Type Front(void);
+	void EnQueue(Type item);
+	Type DeQueue(void);
 };
 
 #endif // !__QUEUE_H

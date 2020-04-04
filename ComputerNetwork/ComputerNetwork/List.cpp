@@ -1,5 +1,4 @@
 
-
 #include "List.h"
 
 List::List() {
@@ -8,12 +7,12 @@ List::List() {
 
 List::List(const List& other) {
     head = tail = nullptr;
-    Node* other_item = other.head;
-    while(other_item) {
-        Node* curr_item = new Node(*other_item);
-        curr_item->next = nullptr;
-        addToTail(curr_item);
-        other_item = other_item->next;
+    Node* itemToCopyFromList = other.head;
+    while(itemToCopyFromList) {
+        Node* CopiedNode = new Node(*itemToCopyFromList);
+        CopiedNode->next = nullptr;
+        addToTail(CopiedNode);
+        itemToCopyFromList = itemToCopyFromList->next;
     }
 }
 
@@ -26,12 +25,12 @@ List::List(List&& other) {
 }
 
 List::~List() {
-    Node*temp = head;
-    Node*next_temp;
-    while(temp) {
-        next_temp = temp->next;
-        delete temp;
-        temp = next_temp;
+    Node* itemToDeleteInList = head;
+    Node* nextItem;
+    while(itemToDeleteInList) {
+        nextItem = itemToDeleteInList->next;
+        delete itemToDeleteInList;
+        itemToDeleteInList = nextItem;
     }
 }
 
@@ -40,12 +39,12 @@ const List& List::operator=(const List& other) {
         if (this->head != nullptr) {
             this->~List();
         }
-        Node* curr_other = other.head;
-        while (curr_other != nullptr) {
-            Node* temp = new Node(*curr_other);         // check goes to copy
-            temp->next = nullptr;
-            addToTail(temp);
-            curr_other = curr_other->next;
+        Node* itemInListOther = other.head;
+        while (itemInListOther != nullptr) {
+            Node* copyOfItemInListOther = new Node(*itemInListOther);         // check goes to copy
+            copyOfItemInListOther->next = nullptr;
+            addToTail(copyOfItemInListOther);
+            itemInListOther = itemInListOther->next;
         }
     }
     else {
@@ -57,75 +56,69 @@ bool List::isEmpty() const {
     return head == nullptr;
 }
 
-void List::addToTail(Node* new_item) {
-    if(!itemIsInList(*new_item)) { // add quantity to exist item
+void List::addToTail(Node* newNodeToAdd) {
+    if(!numIsInList(*newNodeToAdd)) { // add quantity to exist item
         if (isEmpty()) {
-            head = tail = new_item;
+            head = tail = newNodeToAdd;
         } else {
-            tail->next = new_item;
-            tail = new_item;
+            tail->next = newNodeToAdd;
+            tail = newNodeToAdd;
         }
     }
 }
 
-bool List::deleteItem(const char *item_name) {
-    Node*prev = nullptr;
-    Node *curr = head;
+bool List::DeleteNodeFromList(Type TypeToDeleteFromList) {
+    Node* PrevOfCurr = nullptr;
+    Node *CurrNodeInList = head;
 
     if(isEmpty()) {
         return false;
     } else {
-        while(curr) {
-            if(strcmp(item_name, curr->next) == 0) {
-                if(!prev) {
-                    head = curr->next;
-                    delete curr;
-                } else if(!curr->next) {
-                    prev->next = curr->next;
-                    tail = prev;
-                    delete curr;
+        while(CurrNodeInList) {
+            if(NumToDeleteFromList == CurrNodeInList->m_num) {
+                if(!PrevOfCurr) {
+                    head = CurrNodeInList->next;
+                    delete CurrNodeInList;
+                } else if(!CurrNodeInList->next) {
+                    PrevOfCurr->next = CurrNodeInList->next;
+                    tail = PrevOfCurr;
+                    delete CurrNodeInList;
                 } else {
-                    prev->next = curr->next;
-                    delete curr;
+                    PrevOfCurr->next = CurrNodeInList->next;
+                    delete CurrNodeInList;
                 }
                 return true;
             }
-            prev = curr;
-            curr = curr->next;
+            PrevOfCurr = CurrNodeInList;
+            CurrNodeInList = CurrNodeInList->next;
         }
     }
     return false;
 }
 
-bool List::itemIsInList(const Node& new_item) { // remeber he add to quantity already
-    Node* temp = head;
-    while (temp) {
-        if (strcmp(temp->name, new_item.name) == 0) {
-            temp->quantity += new_item.quantity;
+bool List::TypeIsInList(const Node& NewNode) {
+    Node* NodeInList = head;
+    while (NodeInList) {
+        if (NewNode.m_num == NodeInList->m_num)
             return true;
-        }
-        temp = temp->getNext();
+        NodeInList = NodeInList->next;
     }
     return false;
 }
 
-Node*List::findItem(const char *item_name) {
-    Node *temp = head;
-    while (temp) {
-        if(strcmp(temp->name, item_name) == 0) {
-            return temp;
+Node*List::findNode(Type TypeToFind) {
+    Node *NodeInList = head;
+    while (NodeInList) {
+        if(NodeInList->m_num == NumToFind) {
+            return NodeInList;
         }
-        temp = temp->next;
+        NodeInList = NodeInList->next;
     }
     return nullptr;
 }
 
 void List::printList() const {
-    Node*curr = head;
-    while(curr) {
-        curr->printItem();
-        curr = curr->next;
-    }
+    head->printNodeNum();
 }
 
 Node *List::getHead() {
