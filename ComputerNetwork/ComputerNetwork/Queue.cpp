@@ -3,7 +3,7 @@
 Queue::Queue(int size_of_data) {
 	head = 1;
 	tail = 0;
-	data = new Square[size_of_data];
+	data = new Type[size_of_data];
 	MAX_SIZE = size_of_data;
 }
 Queue::~Queue() {
