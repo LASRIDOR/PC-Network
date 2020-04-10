@@ -6,20 +6,22 @@
 using namespace std;
 #pragma warning (disable: 4996)
 
+typedef int Type;
+
 class Node {
+	friend class List;
 public:
 	Node() = default;
-	Node(Square square ,Node* next);
+	Node(int num, Node* nextnode);
 	~Node();
 
-	void SetSquare(int row, int col);
-	void SetCurr_next(Node* next);
+	void setNum(int num);
+	Type getNum();
 
-	Square GetSquare();
-	Node* GetNext();
+	void printNodeNum();
 
 private:
-	Square m_square;
+	Type m_num;;
 	Node* next;
 };
 
