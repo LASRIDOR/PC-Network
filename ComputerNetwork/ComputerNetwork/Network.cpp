@@ -9,8 +9,17 @@ Network::Network(int numOfConnections, int numOfComputers) : numOfConnections(nu
     connections = new List[this->numOfComputers + 1];
 }
 
-const List& Network::operator[](int index) const {
-    return this->connections[index];
+Network::Network(const Network& other) {
+    this->numOfComputers = other.numOfComputers;
+    this->numOfConnections = other.numOfConnections;
+    this->connections = new List[this->numOfComputers + 1];
+    for (int i = 0; i < numOfComputers; ++i) {
+        connections[i] = other.connections[i];
+    }
+}
+
+Network::~Network() {
+    delete connections;
 }
 
 void Network::newConnection(Computer from, Computer to) {
@@ -31,6 +40,10 @@ int Network::getNumOfConnections() const {
 
 int Network::getNumOfComputers() const {
     return numOfComputers;
+}
+
+const List& Network::operator[](int index) const {
+    return this->connections[index];
 }
 
 ostream &operator<<(ostream &os, const Network &network) {
