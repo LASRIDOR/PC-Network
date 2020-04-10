@@ -7,9 +7,7 @@ using namespace std;
 
 #pragma warning (disable: 4996)
 
-#include "Node.h"
-
-typedef int Type;
+#include "ItemTypeNode.h"
 
 class Stack {
 public:
@@ -17,11 +15,11 @@ public:
 	~Stack();
 	void MakeEmpty();
 	int IsEmpty();
-	void Push(Type square);
-	Computer Pop();
-	Computer Top();
+	void Push(Data item);
+	void Push(int line,int ComputerPoint);
+	Data Pop();
 private:
-	Node* top;
+	ItemTypeNode* top;
 };
 
 
