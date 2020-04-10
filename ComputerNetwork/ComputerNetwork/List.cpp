@@ -34,13 +34,10 @@ List::~List() {
     }
 }
 
-/*const List& List::operator=(const List& other) {
+const List& List::operator=(const List& other) {
     if (this != &other) {
-        if (this->head != nullptr) {
-            this->~List();
-        }
         Node* itemInListOther = other.head;
-        while (itemInListOther != nullptr) {
+        while (itemInListOther) {
             Node* copyOfItemInListOther = new Node(*itemInListOther);
             copyOfItemInListOther->next = nullptr;
             addToTail(copyOfItemInListOther);
@@ -50,7 +47,7 @@ List::~List() {
     else {
         return *this;
     }
-}*/
+}
 
 bool List::isEmpty() const {
     return head == nullptr;

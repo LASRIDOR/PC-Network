@@ -17,6 +17,8 @@ private:
 
 public:
     Network(int numOfConnections, int numOfComputers);
+    Network(const Network& other);
+    virtual ~Network();
 
     List *getConnections() const;
     int getNumOfConnections() const;
@@ -25,7 +27,6 @@ public:
     void newConnection(Computer from, Computer to);
 
     const List& operator[](int index) const;
-
     friend ostream &operator<<(ostream &os, const Network &network);
 };
 

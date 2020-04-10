@@ -28,7 +28,7 @@ public:
     List(const List& other);
     List(List&& other);
 
-    //const List& operator=(const List& other);
+    const List& operator=(const List& other);
     friend ostream &operator<<(ostream &os, const List &list);
 };
 
