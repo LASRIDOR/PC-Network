@@ -4,7 +4,7 @@
 
 #include "Computer.h"
 
-Computer::Computer(int id) : id(id) {}
+Computer::Computer(int id) : id(id),Color(false) {}
 
 int Computer::getID() const {
     return id;
@@ -16,4 +16,8 @@ void Computer::setID(int newID) {
 
 bool Computer::operator==(const Computer& other) {
     return this->id == other.getID();
+}
+
+void Computer::ChangeColorTo(bool color) {
+    this->Color = color;
 }
