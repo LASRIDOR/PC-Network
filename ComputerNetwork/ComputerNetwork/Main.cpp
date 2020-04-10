@@ -1,34 +1,35 @@
 #include "MainHeader.h"
 #include "List.h"
+#include "Network.h"
 #include <iostream>
+
+void initNetwork(int numOfConnections, Network &theNetwork);
+
 using namespace std;
 
 int main() {
+
     int numOfComputers;
     int numOfConnections;
-
-    int computerFrom, computerTo;
 
     cin >> numOfComputers;
     cin >> numOfConnections;
 
-    numOfComputers++;                                   //Adjusting for offset by 1.
-    List* network = new List[numOfComputers];
+    Network theNetwork(numOfConnections, numOfComputers);
+    initNetwork(numOfConnections, theNetwork);
+    cout << theNetwork;
+}
 
-    for (int i = 1; i < numOfConnections; ++i) {
+void initNetwork(int numOfConnections, Network &theNetwork) {
+    int computerFrom, computerTo;
+
+    for (int i = 0; i < numOfConnections; ++i) {
         cin >> computerFrom;
         cin >> computerTo;
 
-        if (computerFrom > numOfComputers || computerTo > numOfComputers || computerFrom == computerTo) {
-            cout << "Invalid input!";
-            exit(1);
-        }
-        network[computerFrom].addToTail(computerTo);
-    }
+        Computer from(computerFrom);
+        Computer to(computerTo);
 
-    for (int i = 1; i < numOfComputers; ++i) {
-        cout << i << ":";
-        network[i].printList();
-        cout << "\n";
+        theNetwork.newConnection(from, to);
     }
 }
