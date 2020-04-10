@@ -15,11 +15,11 @@ class Stack {
 public:
 	Stack();
 	~Stack();
-	void MakeEmpty(void);
+	void MakeEmpty();
 	int IsEmpty();
 	void Push(Type square);
-	Type Pop(void);
-	Type Top(void);
+	Computer Pop();
+	Computer Top();
 private:
 	Node* top;
 };

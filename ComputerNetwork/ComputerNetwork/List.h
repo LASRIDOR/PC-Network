@@ -2,9 +2,8 @@
 #ifndef ECOMMERCE_ITEMLIST_H
 #define ECOMMERCE_ITEMLIST_H
 
-#include "node.h"
-
-typedef int Type;
+#include "Computer.h"
+#include "Node.h"
 
 class List {
 private:
@@ -13,20 +12,22 @@ private:
 
 public:
     void addToTail(Node* NewNodeToAdd);
-    bool DeleteNodeFromList(Type TypeToDeleteFromList);
+    void addToTail(Computer computer);
+    //bool DeleteNodeFromList(Type TypeToDeleteFromList);
+    void deleteNode(Node *toDelete);
     bool isEmpty()   const;
     void printList() const;
     Node *getHead();
-    Node *findNode(Type TypeToFind);
-    bool TypeIsInList(const Node& NewNode);
-public:
+    Node *find(Computer computerToFind);
+    //bool TypeIsInList(const Node& NewNode);
 
+public:
     List();
     ~List();
     List(const List& other);
     List(List&& other);
-    const List& operator=(const List& other);
 
+    //const List& operator=(const List& other);
 };
 
 

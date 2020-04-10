@@ -1,7 +1,6 @@
 #include "Node.h"
 
-Node::Node(int num, Node* nextnode) {
-	this->m_num = num;
+Node::Node(Computer computer, Node* nextnode) : computer(computer){
 	this->next = nextnode;
 }
 
@@ -10,15 +9,19 @@ Node::~Node() {
 }
 
 void Node::setNum(int num) {
-	this->m_num = num;
+	this->computer = num;
 }
 
-int Node::getNum() {
-	return this->m_num;
+Computer Node::getComputer() const {
+	return this->computer;
 }
 
-void Node::printNodeNum() {
-	cout << this->m_num << " ";
+void Node::printNode() {
+	cout << this->computer.getID() << "->";
 	if(this->next != nullptr)
-	this->next->printNodeNum();
+        this->next->printNode();
+}
+
+Node *Node::getNext() const {
+    return next;
 }

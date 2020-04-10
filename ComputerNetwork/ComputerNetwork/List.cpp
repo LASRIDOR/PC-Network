@@ -34,14 +34,14 @@ List::~List() {
     }
 }
 
-const List& List::operator=(const List& other) {
+/*const List& List::operator=(const List& other) {
     if (this != &other) {
         if (this->head != nullptr) {
             this->~List();
         }
         Node* itemInListOther = other.head;
         while (itemInListOther != nullptr) {
-            Node* copyOfItemInListOther = new Node(*itemInListOther);         // check goes to copy
+            Node* copyOfItemInListOther = new Node(*itemInListOther);
             copyOfItemInListOther->next = nullptr;
             addToTail(copyOfItemInListOther);
             itemInListOther = itemInListOther->next;
@@ -50,23 +50,36 @@ const List& List::operator=(const List& other) {
     else {
         return *this;
     }
-}
+}*/
 
 bool List::isEmpty() const {
     return head == nullptr;
 }
 
 void List::addToTail(Node* newNodeToAdd) {
-    if(!numIsInList(*newNodeToAdd)) { // add quantity to exist item
-        if (isEmpty()) {
-            head = tail = newNodeToAdd;
-        } else {
-            tail->next = newNodeToAdd;
-            tail = newNodeToAdd;
-        }
+    if (isEmpty()) {
+        head = tail = newNodeToAdd;
+    } else {
+        tail->next = newNodeToAdd;
+        tail = newNodeToAdd;
     }
 }
 
+void List::addToTail(Computer computer) {
+    Node* newNode = new Node(computer, nullptr);
+    if (isEmpty()) {
+        head = tail = newNode;
+    } else {
+        tail->next = newNode;
+        tail = newNode;
+    }
+}
+
+void List::deleteNode(Node *toDelete) {
+    //Todo: complete this.
+}
+
+/*
 bool List::DeleteNodeFromList(Type TypeToDeleteFromList) {
     Node* PrevOfCurr = nullptr;
     Node *CurrNodeInList = head;
@@ -75,7 +88,7 @@ bool List::DeleteNodeFromList(Type TypeToDeleteFromList) {
         return false;
     } else {
         while(CurrNodeInList) {
-            if(NumToDeleteFromList == CurrNodeInList->m_num) {
+            if(NumToDeleteFromList == CurrNodeInList->computer) {
                 if(!PrevOfCurr) {
                     head = CurrNodeInList->next;
                     delete CurrNodeInList;
@@ -94,22 +107,22 @@ bool List::DeleteNodeFromList(Type TypeToDeleteFromList) {
         }
     }
     return false;
-}
+}*/
 
-bool List::TypeIsInList(const Node& NewNode) {
+/*bool List::TypeIsInList(const Node& NewNode) {
     Node* NodeInList = head;
     while (NodeInList) {
-        if (NewNode.m_num == NodeInList->m_num)
+        if (NewNode.computer == NodeInList->computer)
             return true;
         NodeInList = NodeInList->next;
     }
     return false;
-}
+}*/
 
-Node*List::findNode(Type TypeToFind) {
+Node*List::find(Computer computerToFind) {
     Node *NodeInList = head;
     while (NodeInList) {
-        if(NodeInList->m_num == NumToFind) {
+        if(NodeInList->computer == computerToFind) {
             return NodeInList;
         }
         NodeInList = NodeInList->next;
@@ -118,7 +131,9 @@ Node*List::findNode(Type TypeToFind) {
 }
 
 void List::printList() const {
-    head->printNodeNum();
+    if (head != nullptr) {
+        head->printNode();
+    }
 }
 
 Node *List::getHead() {

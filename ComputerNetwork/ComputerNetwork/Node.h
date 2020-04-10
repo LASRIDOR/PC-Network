@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include "Computer.h"
+
 using namespace std;
 #pragma warning (disable: 4996)
 
@@ -11,17 +13,17 @@ typedef int Type;
 class Node {
 	friend class List;
 public:
-	Node() = default;
-	Node(int num, Node* nextnode);
+	Node(Computer computer, Node* nextnode);
 	~Node();
 
 	void setNum(int num);
-	Type getNum();
+	Computer getComputer() const;
+    Node *getNext() const;
 
-	void printNodeNum();
+    void printNode();
 
 private:
-	Type m_num;;
+	Computer computer;
 	Node* next;
 };
 
