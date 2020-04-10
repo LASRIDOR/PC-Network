@@ -5,8 +5,8 @@
 #ifndef PC_NETWORK_COMPUTER_H
 #define PC_NETWORK_COMPUTER_H
 
-#define WHITE false;
-#define BLACK true;
+//#define WHITE false;
+//#define BLACK true;
 
 class Computer {
 private:
@@ -19,7 +19,7 @@ public:
 
     int getID() const;
     void setID(int newID);
-    void ChangeColorTo(bool color);
+ //   void ChangeColorTo(bool color);
 
 };
 

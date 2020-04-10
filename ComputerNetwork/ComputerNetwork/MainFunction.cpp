@@ -1,8 +1,7 @@
 #include "MainHeader.h"
 
-StaticList* accessibleGroupStack(List* network,int numOfComputers,int ComputerPoint) {
-	Stack S;
-	StaticList* AccessibleGroup = new StaticList;
-	network[ComputerPoint - 1].ChangeColorTo(BLACK);
-
+void accessibleGroup(List* network,int numOfComputers,int ComputerPoint) {
+	StaticList* StackAccessibleGroup;
+	StaticList* RecAccessibleGroup;
+	bool Colors;
 }
