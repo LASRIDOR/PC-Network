@@ -7,7 +7,7 @@ Stack::~Stack() {
 	MakeEmpty();
 }
 void Stack::MakeEmpty() {
-	Node* temp;
+	ItemTypeNode* temp;
 	while (top != NULL) {
 		temp = top;
 		top = top->getNext();
@@ -17,16 +17,19 @@ void Stack::MakeEmpty() {
 int Stack::IsEmpty() {
 	return (top == nullptr);
 }
-void Stack::Push(Type square) {
-	top = new Node(square, top);
+void Stack::Push(Data item) {
+	top = new ItemTypeNode(item, top);
 }
-Computer Stack::Pop() {
+void Push(int line, int ComputerPoint) {
+	top = new ItemTypeNode(line, ComputerPoint, top);
+}
+Data Stack::Pop() {
 	if (IsEmpty()) {
 		cout << "Error: Stack underflow\n";
 		exit(1);
 	}
-	Node* temp = top;
-	Computer item = top->getComputer();
+	ItemTypeNode* temp = top;
+	Data item = top->data;
 	top = top->getNext();
 	delete temp;
 	return (item);

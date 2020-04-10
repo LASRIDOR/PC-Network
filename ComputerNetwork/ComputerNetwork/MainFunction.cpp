@@ -1,9 +1,23 @@
 #include "MainHeader.h"
 
-/*
-StaticList* accessibleGroupStack(List* network,int numOfComputers,int ComputerPoint) {
-	Stack S;
-	StaticList* AccessibleGroup = new StaticList;
-	network[ComputerPoint - 1].ChangeColorTo(BLACK);
+void accessibleGroup(List* network,int numOfComputers,int ComputerPoint) {
+	StaticList* StackAccessibleGroup = new StaticList;
+	StaticList* RecAccessibleGroup = new StaticList;
+	bool* Colors = new bool[numOfComputers];
+	for (int i = 0; i < numOfComputers; i++) {
+		Colors[i] = WHITE;
+	}
 
-}*/
+
+}
+
+StaticList* makeAccessibleGroupStackVersion(List* network, int ComputerPoint, bool* Colors, StaticList* StackAccessibleGroup) {
+	Stack S;
+	Data DetailsForRec;
+	int line = 0;
+
+	while () {
+
+	}
+
+}

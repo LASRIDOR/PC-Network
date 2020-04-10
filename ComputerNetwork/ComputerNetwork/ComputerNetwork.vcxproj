@@ -139,6 +139,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Computer.cpp" />
+    <ClCompile Include="ItemTypeNode.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainFunction.cpp" />
@@ -149,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Computer.h" />
+    <ClInclude Include="ItemTypeNode.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MainHeader.h" />
     <ClInclude Include="node.h" />
