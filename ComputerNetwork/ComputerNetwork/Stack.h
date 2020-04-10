@@ -7,7 +7,7 @@ using namespace std;
 
 #pragma warning (disable: 4996)
 
-#include "node.h"
+#include "Node.h"
 
 typedef int Type;
 
