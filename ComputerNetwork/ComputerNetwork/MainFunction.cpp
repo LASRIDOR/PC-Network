@@ -13,7 +13,7 @@ void accessibleGroup(List* network,int numOfComputers,int ComputerPoint) {
 
 StaticList* makeAccessibleGroupStackVersion(List* network, int ComputerPoint, bool* Colors, StaticList* StackAccessibleGroup) {
 	Stack S;
-	ItemType DetailsForRec;
+	Data DetailsForRec;
 	int line = 0;
 
 	while () {
