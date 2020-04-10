@@ -10,24 +10,24 @@ void Stack::MakeEmpty() {
 	Node* temp;
 	while (top != NULL) {
 		temp = top;
-		top = top->GetNext();
+		top = top->getNext();
 		delete temp;
 	}
 }
 int Stack::IsEmpty() {
-	return (top == NULL);
+	return (top == nullptr);
 }
 void Stack::Push(Type square) {
 	top = new Node(square, top);
 }
-Type Stack::Pop(void) {
+Computer Stack::Pop() {
 	if (IsEmpty()) {
 		cout << "Error: Stack underflow\n";
 		exit(1);
 	}
 	Node* temp = top;
-	Type item = top->GetSquare();
-	top = top->GetNext();
+	Computer item = top->getComputer();
+	top = top->getNext();
 	delete temp;
 	return (item);
 }

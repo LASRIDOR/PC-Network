@@ -1,3 +1,4 @@
+/*
 #include "Queue.h"
 
 Queue::Queue(int size_of_data) {
@@ -41,4 +42,4 @@ Square Queue::DeQueue(void) {
 	Square item = data[head];
 	head = AddOne(head);
 	return (item);
-}
+}*/
