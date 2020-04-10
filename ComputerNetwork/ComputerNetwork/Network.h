@@ -12,6 +12,8 @@
 class Network {
 private:
     List* connections;
+
+private:
     int numOfConnections;
     int numOfComputers;
 

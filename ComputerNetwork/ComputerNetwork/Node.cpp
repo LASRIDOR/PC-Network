@@ -5,11 +5,7 @@ Node::Node(Computer computer, Node* nextnode) : computer(computer){
 }
 
 Node::~Node() {
-	delete[]this->next;
-}
-
-void Node::setNum(int num) {
-	this->computer = num;
+	delete[] this->next;
 }
 
 Computer Node::getComputer() const {

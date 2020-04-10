@@ -18,7 +18,7 @@ public:
     void deleteNode(Node *toDelete);
     bool isEmpty()   const;
     void printList() const;
-    Node *getHead();
+    Node *getHead()  const;
     Node *find(Computer computerToFind);
     //bool TypeIsInList(const Node& NewNode);
 

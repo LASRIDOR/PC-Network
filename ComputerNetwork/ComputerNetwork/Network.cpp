@@ -19,7 +19,7 @@ Network::Network(const Network& other) {
 }
 
 Network::~Network() {
-    delete connections;
+
 }
 
 void Network::newConnection(Computer from, Computer to) {

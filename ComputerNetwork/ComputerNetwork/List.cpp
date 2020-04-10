@@ -133,7 +133,7 @@ void List::printList() const {
     }
 }
 
-Node *List::getHead() {
+Node *List::getHead() const {
     return head;
 }
 

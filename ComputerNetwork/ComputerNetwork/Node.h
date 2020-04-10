@@ -16,7 +16,6 @@ public:
 	Node(Computer computer, Node* nextnode);
 	~Node();
 
-	void setNum(int num);
 	Computer getComputer() const;
     Node *getNext() const;
 
