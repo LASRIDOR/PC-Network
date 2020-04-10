@@ -4,7 +4,9 @@
 
 #include "Computer.h"
 
-Computer::Computer(int id) : id(id) {}
+Computer::Computer(int id) {
+    this->id = id;
+}
 
 int Computer::getID() const {
     return id;
@@ -18,6 +20,15 @@ bool Computer::operator==(const Computer& other) {
     return this->id == other.getID();
 }
 
-//void Computer::ChangeColorTo(bool color) {
-//   this->Color = color;
-//}
+bool Computer::operator>(const Computer& other) {
+    return this->id > other.getID();
+}
+
+bool Computer::operator<(const Computer& other) {
+    return this->id < other.getID();
+}
+
+std::ostream &operator<<(std::ostream &os, const Computer &computer) {
+    os << computer.id;
+    return os;
+}

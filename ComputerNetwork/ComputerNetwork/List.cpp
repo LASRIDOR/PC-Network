@@ -139,3 +139,12 @@ void List::printList() const {
 Node *List::getHead() {
     return head;
 }
+
+ostream &operator<<(ostream &os, const List &list) {
+    Node *currentNode = list.head;
+    while (currentNode) {
+        os << currentNode->getComputer() << "->";
+        currentNode = currentNode->getNext();
+    }
+    return os;
+}

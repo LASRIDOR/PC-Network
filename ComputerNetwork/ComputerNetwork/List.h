@@ -2,6 +2,7 @@
 #ifndef ECOMMERCE_ITEMLIST_H
 #define ECOMMERCE_ITEMLIST_H
 
+#include <ostream>
 #include "Computer.h"
 #include "Node.h"
 
@@ -28,6 +29,7 @@ public:
     List(List&& other);
 
     //const List& operator=(const List& other);
+    friend ostream &operator<<(ostream &os, const List &list);
 };
 
 
