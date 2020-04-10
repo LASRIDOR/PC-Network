@@ -1,25 +1,29 @@
 #include "Node.h"
 
-Node::Node(Square square, Node* nextnode) {
-	m_square.SetCurrCol(square.GetCurrCol());
-	m_square.SetCurrRow(square.GetCurrRow());
-	next = nextnode;
+Node::Node(int num, Node* nextnode) {
+	setNum(num);
+	setNext(nextnode);
 }
 Node::~Node() {
 
 }
 
-void Node::SetSquare(int row, int col) {
-	m_square.SetCurrRow(row);
-	m_square.SetCurrCol(col);
+void Node::setNum(int num) {
+	this->m_num = num;
 }
-void Node::SetCurr_next(Node* nextnode) {
-	next = nextnode;
+void Node::setNext(Node* nextnode) {
+	this->next = nextnode;
 }
 
-Square Node::GetSquare() {
-	return m_square;
+int Node::getNum() {
+	return this->m_num;
 }
 Node* Node::GetNext() {
-	return next;
+	return this->next;
+}
+
+void Node::printNodeNum() {
+	cout << this->m_num << " ";
+	if(this->next != nullptr)
+	this->next->printNodeNum();
 }
