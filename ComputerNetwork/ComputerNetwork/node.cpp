@@ -1,25 +1,20 @@
 #include "Node.h"
 
 Node::Node(int num, Node* nextnode) {
-	setNum(num);
-	setNext(nextnode);
+	this->m_num = num;
+	this->next = nextnode;
 }
-Node::~Node() {
 
+Node::~Node() {
+	delete[]this->next;
 }
 
 void Node::setNum(int num) {
 	this->m_num = num;
 }
-void Node::setNext(Node* nextnode) {
-	this->next = nextnode;
-}
 
 int Node::getNum() {
 	return this->m_num;
-}
-Node* Node::GetNext() {
-	return this->next;
 }
 
 void Node::printNodeNum() {
