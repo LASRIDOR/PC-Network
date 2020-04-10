@@ -1,4 +1,4 @@
-#include "node.h"
+#include "Node.h"
 
 Node::Node(int num, Node* nextnode) {
 	setNum(num);
