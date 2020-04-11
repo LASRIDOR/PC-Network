@@ -5,6 +5,7 @@
 #include "ColorArray.h"
 using namespace std;
 
+//-----------------------------------------------------------------------------
 ColorArray::ColorArray(int size) : size(size) {
     array = new bool[size + 1];
 
@@ -12,7 +13,23 @@ ColorArray::ColorArray(int size) : size(size) {
         array[i] = WHITE;
     }
 }
+//-----------------------------------------------------------------------------
+ColorArray::ColorArray(const ColorArray& other) {
+    this->array = new bool[other.size];
+    this->size = other.size;
+    for (int i = 0; i < this->size;i++) {
+        this->array[i] = other.array[i];
+    }
+}
+//-----------------------------------------------------------------------------
+ColorArray::ColorArray(ColorArray&& other) {
+    this->array = other.array;
+    this->size = other.size;
 
+    other.array = nullptr;
+    other.size = -1;
+}
+//-----------------------------------------------------------------------------
 ColorArray::~ColorArray() {
     delete array;
 }
@@ -28,7 +45,7 @@ void ColorArray::printAccessibles() const {
             cout << i << " ";
         }
     }
-    cout << "}";
+    cout << "}" << endl;
 }
 
 bool ColorArray::operator[](int index) const {

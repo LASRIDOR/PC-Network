@@ -17,6 +17,31 @@ StaticList::StaticList(int size_of_data) {
 	}
 	MAX_SIZE = size_of_data;
 }
+StaticList::StaticList(const StaticList& other) {
+	this->headfree = other.headfree;
+	this->headlist = other.headlist;
+	this->MAX_SIZE = other.MAX_SIZE;
+	this->tailfree = other.tailfree;
+	this->taillist = other.taillist;
+	data = new Type * [StaticListSize];
+	for (int i = 0; i < StaticListSize; i++) {
+		data[i] = new Type[MAX_SIZE];
+	}
+	for (int i = 0; i < StaticListSize; i++) {
+		for (int j = 0; j < MAX_SIZE; j++) {
+			this->data[i][j] = other.data[i][j];
+		}
+	}
+}
+StaticList::StaticList(StaticList&& other) {
+	this->data = other.data;
+	other.data = nullptr;
+	this->headfree = other.headfree;
+	this->headlist = other.headlist;
+	this->MAX_SIZE = other.MAX_SIZE;
+	this->tailfree = other.tailfree;
+	this->taillist = other.taillist;
+}
 StaticList::~StaticList() {
 	for (int i = 0; i < StaticListSize; i++) {
 		delete []data[i];

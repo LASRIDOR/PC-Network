@@ -13,7 +13,6 @@ private:
     int id;
 
 public:
-    Computer() = default;
     Computer(int id);
 
     bool operator>(const Computer &other);

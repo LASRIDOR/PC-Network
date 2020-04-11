@@ -23,11 +23,12 @@ int main() {
         exit(1);
     }
 
+    StaticList StackAccessibleGroup;
+    StaticList RecAccessibleGroup;
 
-    accessibleGroup(theNetwork, numOfComputers, computerToFindAccessible);
-    findAccessible(theNetwork, colorArrayRec, computerToFindAccessible);
+    accessibleGroup(theNetwork, numOfComputers, computerToFindAccessible,StackAccessibleGroup, RecAccessibleGroup, colorArrayStack, colorArrayRec);
     colorArrayRec.printAccessibles();
-
+    colorArrayStack.printAccessibles();
 }
 
 

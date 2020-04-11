@@ -20,6 +20,7 @@ private:
 public:
     Network(int numOfConnections, int numOfComputers);
     Network(const Network& other);
+    Network(Network&& other);
     virtual ~Network();
 
     List *getConnections() const;
