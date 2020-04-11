@@ -23,6 +23,8 @@ private:
 
 public:
 	StaticList(int size_of_data = 100);
+	StaticList(const StaticList& other);
+	StaticList(StaticList&& other);
 	~StaticList();
 	void MakeEmpty(void);
 	int IsEmpty(void);

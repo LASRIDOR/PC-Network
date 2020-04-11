@@ -8,7 +8,6 @@
 using namespace std;
 #pragma warning (disable: 4996)
 
-typedef int Type;
 
 class Node {
 	friend class List;
@@ -17,6 +16,7 @@ public:
 	~Node();
 
 	Computer getComputer() const;
+	int getComputerID();
     Node *getNext() const;
 
     void printNode();

@@ -17,9 +17,15 @@ Network::Network(const Network& other) {
         connections[i] = other.connections[i];
     }
 }
+Network::Network(Network&& other) {
+    this->connections = other.connections;
+    this->numOfComputers = other.numOfComputers;
+    this->numOfConnections = other.numOfConnections;
 
+    other.connections = nullptr;
+}
 Network::~Network() {
-
+    delete[] this->connections;
 }
 
 void Network::newConnection(Computer from, Computer to) {

@@ -17,7 +17,8 @@ private:
 
 public:
     explicit ColorArray(int size);
-
+    ColorArray(const ColorArray& other);
+    ColorArray(ColorArray&& other);
     virtual ~ColorArray();
 
     void setBlack(int index);
