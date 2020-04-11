@@ -20,7 +20,7 @@ int Stack::IsEmpty() {
 void Stack::Push(Data item) {
 	top = new ItemTypeNode(item, top);
 }
-void Push(int line, int ComputerPoint) {
+void Stack::Push(int line, int ComputerPoint) {
 	top = new ItemTypeNode(line, ComputerPoint, top);
 }
 Data Stack::Pop() {

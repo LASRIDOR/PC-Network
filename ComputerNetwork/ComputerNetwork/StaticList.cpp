@@ -10,7 +10,7 @@ StaticList::StaticList(int size_of_data) {
 		data[i] = new Type[size_of_data];
 	}
 	for (int i = 0; i < size_of_data;i++) {
-		if (i = size_of_data-1) {
+		if (i == size_of_data-1) {
 			data[NEXTPLACE][i] = -1;
 		}
 		data[NEXTPLACE][i] = i + 1;

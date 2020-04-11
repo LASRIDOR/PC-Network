@@ -138,21 +138,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ColorArray.cpp" />
     <ClCompile Include="Computer.cpp" />
     <ClCompile Include="ItemTypeNode.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainFunction.cpp" />
+    <ClCompile Include="Network.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="Stack.cpp" />
     <ClCompile Include="StaticList.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ColorArray.h" />
     <ClInclude Include="Computer.h" />
     <ClInclude Include="ItemTypeNode.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MainHeader.h" />
+    <ClInclude Include="Network.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />

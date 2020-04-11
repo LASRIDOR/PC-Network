@@ -1,7 +1,7 @@
 #include "ItemTypeNode.h"
 
 ItemTypeNode::ItemTypeNode(int line, int ComputerPoint, ItemTypeNode* nextnode) {
-	this->data.ComputerPoint = ComputerPoint;
+	this->data.ComputerID = ComputerPoint;
 	this->data.line = line;
 }
 ItemTypeNode::ItemTypeNode(Data data, ItemTypeNode* next) {
@@ -12,7 +12,7 @@ ItemTypeNode::~ItemTypeNode() {
 }
 
 void ItemTypeNode::setData(int ComputerPoint, int line) {
-	this->data.ComputerPoint = ComputerPoint;
+	this->data.ComputerID = ComputerPoint;
 	this->data.line = line;
 }
 void ItemTypeNode::setNext(ItemTypeNode* next) {
@@ -25,6 +25,6 @@ ItemTypeNode* ItemTypeNode::getNext() const {
 	return this->next;
 }
 void ItemTypeNode::printNode() {
-	cout << this->data.line << " " << this->data.ComputerPoint << endl;
+	cout << this->data.line << " " << this->data.ComputerID << endl;
 	this->next->printNode();
 }

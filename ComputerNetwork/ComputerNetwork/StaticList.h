@@ -2,6 +2,7 @@
 #ifndef __STATICLIST_H
 #define __STATICLIST_H
 
+#include "Computer.h"
 #include <iostream>
 #include <stdlib.h>
 using namespace std;

@@ -8,7 +8,7 @@ using namespace std;
 #pragma warning (disable: 4996)
 
 struct Data {
-	int line, ComputerPoint;
+	int line, ComputerID;
 };
 
 class ItemTypeNode {
