@@ -48,6 +48,25 @@ StaticList::~StaticList() {
 	}
 	delete[]data;
 }
+const StaticList& StaticList::operator=(const StaticList& other) {
+	if (this != &other) {
+		headlist = other.headlist;
+		headfree = other.headfree;
+		taillist = other.taillist; 
+		tailfree = other.tailfree;
+		MAX_SIZE = other.MAX_SIZE;
+		data = new Type*[StaticListSize];
+		for (int i = 0; i < StaticListSize; i++) {
+			data[i] = new Type[MAX_SIZE];
+		}
+		for (int i = 0; i < StaticListSize; i++) {
+			for (int j = 0; j < MAX_SIZE; j++) {
+				this->data[i][j] = other.data[i][j];
+			}
+		}
+	}
+	return *this;
+}
 void StaticList::MakeEmpty(void) {
 	this->headlist = -1;
 	this->taillist = -1;

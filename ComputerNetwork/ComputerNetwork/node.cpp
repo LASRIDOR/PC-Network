@@ -11,6 +11,9 @@ Node::~Node() {
 Computer Node::getComputer() const {
 	return this->computer;
 }
+int Node::getComputerID() {
+	return this->computer.getID();
+}
 
 void Node::printNode() {
 	cout << this->computer.getID() << "->";

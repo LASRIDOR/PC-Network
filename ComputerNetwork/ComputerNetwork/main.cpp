@@ -11,7 +11,9 @@ int main() {
     cin >> numOfComputers;
     cin >> numOfConnections;
 
-    ColorArray colorArray(numOfComputers);
+    ColorArray colorArrayRec(numOfComputers);
+    ColorArray colorArrayStack(numOfComputers);
+
     Network theNetwork(numOfConnections, numOfComputers);
     initNetwork(theNetwork, numOfConnections);
 
@@ -21,11 +23,16 @@ int main() {
         exit(1);
     }
 
-    findAccessible(theNetwork, colorArray, computerToFindAccessible);
+    StaticList StackAccessibleGroup;
+    StaticList RecAccessibleGroup;
 
-    colorArray.printAccessibles();
+    accessibleGroup(theNetwork, numOfComputers, computerToFindAccessible,StackAccessibleGroup, RecAccessibleGroup, colorArrayStack, colorArrayRec);
+    colorArrayRec.printAccessibles();
+    colorArrayStack.printAccessibles();
 }
 
+
+/*
 void initNetwork(Network &theNetwork, int numOfConnections) {
     int computerFrom, computerTo;
 
@@ -52,3 +59,4 @@ void findAccessible(Network& network, ColorArray& colorArray, int computerID) {
         connectedComputerNode = connectedComputerNode->getNext();
     }
 }
+*/
