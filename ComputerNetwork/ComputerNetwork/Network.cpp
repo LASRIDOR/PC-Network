@@ -24,7 +24,7 @@ Network::Network(Network&& other) {
 
     other.connections = nullptr;
 }
-Network::~Network() {
+Network::~Network() { 
     delete[] this->connections;
 }
 

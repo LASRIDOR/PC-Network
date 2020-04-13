@@ -26,6 +26,7 @@ public:
 	StaticList(const StaticList& other);
 	StaticList(StaticList&& other);
 	~StaticList();
+	const StaticList& operator=(const StaticList & other);
 	void MakeEmpty(void);
 	int IsEmpty(void);
 	Type Front(void);
