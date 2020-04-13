@@ -11,8 +11,10 @@ StaticList::StaticList(int size_of_data) {
 	}
 	for (int i = 0; i < size_of_data;i++) {
 		if (i == size_of_data-1) {
+			data[DATAPLACE][i] = '\n';
 			data[NEXTPLACE][i] = -1;
 		}
+		data[DATAPLACE][i] = '\n';
 		data[NEXTPLACE][i] = i + 1;
 	}
 	MAX_SIZE = size_of_data;
@@ -33,20 +35,11 @@ StaticList::StaticList(const StaticList& other) {
 		}
 	}
 }
-StaticList::StaticList(StaticList&& other) {
-	this->data = other.data;
-	other.data = nullptr;
-	this->headfree = other.headfree;
-	this->headlist = other.headlist;
-	this->MAX_SIZE = other.MAX_SIZE;
-	this->tailfree = other.tailfree;
-	this->taillist = other.taillist;
-}
 StaticList::~StaticList() {
-	for (int i = 0; i < StaticListSize; i++) {
-		delete []data[i];
+	for (int i = 0; i < StaticListSize;i++) {
+		delete data[i];
 	}
-	delete[]data;
+	delete[] data;
 }
 const StaticList& StaticList::operator=(const StaticList& other) {
 	if (this != &other) {

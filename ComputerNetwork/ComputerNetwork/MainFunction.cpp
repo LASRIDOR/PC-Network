@@ -17,15 +17,15 @@ void initNetwork(Network& theNetwork, int numOfConnections) {
 void accessibleGroup(Network& theNetwork,int numOfComputers,int computerID, StaticList& StackAccessibleGroup,
 	StaticList& RecAccessibleGroup, ColorArray& colorArrayStack, ColorArray& colorArrayRec) {
 
-	StackAccessibleGroup = makeAccessibleGroupStackVersion(theNetwork, computerID, colorArrayStack);
+
+	makeAccessibleGroupStackVersion(theNetwork, computerID, colorArrayStack, StackAccessibleGroup);
 	findAccessible(theNetwork, colorArrayRec, computerID, RecAccessibleGroup);
 
 }
 
-StaticList makeAccessibleGroupStackVersion(Network& theNetwork, int computerID, ColorArray& Colors) {
+void makeAccessibleGroupStackVersion(Network& theNetwork, int computerID, ColorArray& Colors, StaticList& StackAccessibleGroup) {
 	Stack S;
 	Data CurrDetailsForRec;
-	StaticList StackAccessibleGroup;
 	int line = 0;
 
 	CurrDetailsForRec.ComputerID = computerID;
@@ -43,7 +43,6 @@ StaticList makeAccessibleGroupStackVersion(Network& theNetwork, int computerID, 
 			CurrNodeInListComputerPoint = CurrNodeInListComputerPoint->getNext();
 		}
 	}
-	return StackAccessibleGroup;
 }
 
 void findAccessible(Network& network, ColorArray& colorArray, int computerID, StaticList& accessibleGroup) {

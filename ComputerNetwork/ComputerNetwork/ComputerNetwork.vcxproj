@@ -146,7 +146,6 @@
     <ClCompile Include="MainFunction.cpp" />
     <ClCompile Include="Network.cpp" />
     <ClCompile Include="node.cpp" />
-    <ClCompile Include="Queue.cpp" />
     <ClCompile Include="Stack.cpp" />
     <ClCompile Include="StaticList.cpp" />
   </ItemGroup>
@@ -158,7 +157,6 @@
     <ClInclude Include="MainHeader.h" />
     <ClInclude Include="Network.h" />
     <ClInclude Include="node.h" />
-    <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="StaticList.h" />
   </ItemGroup>

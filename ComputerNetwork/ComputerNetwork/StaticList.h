@@ -24,7 +24,6 @@ private:
 public:
 	StaticList(int size_of_data = 100);
 	StaticList(const StaticList& other);
-	StaticList(StaticList&& other);
 	~StaticList();
 	const StaticList& operator=(const StaticList & other);
 	void MakeEmpty(void);
