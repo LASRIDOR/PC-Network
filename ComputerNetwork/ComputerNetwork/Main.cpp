@@ -30,33 +30,3 @@ int main() {
     colorArrayRec.printAccessibles();
     colorArrayStack.printAccessibles();
 }
-
-
-/*
-void initNetwork(Network &theNetwork, int numOfConnections) {
-    int computerFrom, computerTo;
-
-    for (int i = 0; i < numOfConnections; ++i) {
-        cin >> computerFrom;
-        cin >> computerTo;
-
-        Computer from(computerFrom);
-        Computer to(computerTo);
-
-        theNetwork.newConnection(from, to);
-    }
-}
-
-void findAccessible(Network& network, ColorArray& colorArray, int computerID) {
-    colorArray.setBlack(computerID);
-    Node *connectedComputerNode = network[computerID].getHead();
-
-    while (connectedComputerNode) {
-        int connectedComputerNodeID = connectedComputerNode->getComputer().getID();
-        if (colorArray[connectedComputerNodeID] == WHITE) {
-            findAccessible(network, colorArray, connectedComputerNodeID);
-        }
-        connectedComputerNode = connectedComputerNode->getNext();
-    }
-}
-*/

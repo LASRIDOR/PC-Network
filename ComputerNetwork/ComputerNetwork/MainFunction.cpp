@@ -17,7 +17,7 @@ void initNetwork(Network& theNetwork, int numOfConnections) {
 void accessibleGroup(Network& theNetwork,int numOfComputers,int computerID, StaticList& StackAccessibleGroup,
 	StaticList& RecAccessibleGroup, ColorArray& colorArrayStack, ColorArray& colorArrayRec) {
 	makeAccessibleGroupStackVersion(theNetwork, computerID, colorArrayStack, StackAccessibleGroup);
-	findAccessible(theNetwork, colorArrayRec, computerID);
+	findAccessible(theNetwork, colorArrayRec, computerID, RecAccessibleGroup);
 
 }
 
@@ -44,14 +44,15 @@ void makeAccessibleGroupStackVersion(Network& theNetwork, int computerID, ColorA
 
 }
 
-void findAccessible(Network& network, ColorArray& colorArray, int computerID) {
+void findAccessible(Network& network, ColorArray& colorArray, int computerID, StaticList& accessibleGroup) {
 	colorArray.setBlack(computerID);
+    accessibleGroup.InsertToTail(computerID);
 	Node* connectedComputerNode = network[computerID].getHead();
 
 	while (connectedComputerNode) {
 		int connectedComputerNodeID = connectedComputerNode->getComputer().getID();
 		if (colorArray[connectedComputerNodeID] == WHITE) {
-			findAccessible(network, colorArray, connectedComputerNodeID);
+			findAccessible(network, colorArray, connectedComputerNodeID, accessibleGroup);
 		}
 		connectedComputerNode = connectedComputerNode->getNext();
 	}
