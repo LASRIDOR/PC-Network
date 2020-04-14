@@ -4,6 +4,10 @@ Node::Node(Computer computer, Node* nextnode) : computer(computer){
 	this->next = nextnode;
 }
 
+Node::~Node() {
+
+}
+
 Computer Node::getComputer() const {
 	return this->computer;
 }

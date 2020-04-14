@@ -48,10 +48,6 @@ void makeAccessibleGroupStackVersion(Network& theNetwork, int computerID, ColorA
 	}
 }
 
-bool CurrNodeComputerPointIsWhite(Node& CurrNodeInListComputerPoint, ColorArray& Colors) {
-
-}
-
 void findAccessible(Network& network, ColorArray& colorArray, int computerID, StaticList& accessibleGroup) {
 	colorArray.setBlack(computerID);
     accessibleGroup.InsertToTail(computerID);
