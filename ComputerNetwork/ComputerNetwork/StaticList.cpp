@@ -83,8 +83,14 @@ void StaticList::InsertToTail(Type item) {
 	int locNew = headfree;
 	headfree = data[NEXTPLACE][headfree];
 	data[DATAPLACE][locNew] = item;
-	data[NEXTPLACE][locNew] = data[NEXTPLACE][taillist];
-	data[NEXTPLACE][taillist] = locNew;
+	if (this->IsEmpty()) {
+		data[NEXTPLACE][locNew] = -1;
+		this->headlist = locNew;
+	}
+	else {
+		data[NEXTPLACE][locNew] = data[NEXTPLACE][taillist];
+		data[NEXTPLACE][taillist] = locNew;
+	}
 	this->taillist = locNew;
 } 
 int StaticList::DeleteFromTail(void) {
@@ -99,4 +105,13 @@ int StaticList::DeleteFromTail(void) {
 	headfree = locFree;
 	this->tailfree = locFree;
 	return locFree;
+}
+
+void StaticList::printList(void) {
+	int temp;
+	temp = this->headlist;
+	while (temp != -1) {
+		cout << this->data[DATAPLACE][temp] << " ";
+		temp = data[NEXTPLACE][temp];
+	}
 }

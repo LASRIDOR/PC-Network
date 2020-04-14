@@ -42,8 +42,8 @@ void makeAccessibleGroupStackVersion(Network& theNetwork, int computerID, ColorA
 				CurrDetailsForRec.ComputerID = CurrNodeInListComputerPoint->getComputerID();
 				CurrDetailsForRec.line = ++line;
 				S.Push(CurrDetailsForRec);
-				CurrNodeInListComputerPoint = CurrNodeInListComputerPoint->getNext();
 			}
+			CurrNodeInListComputerPoint = CurrNodeInListComputerPoint->getNext();
 		}
 	}
 }

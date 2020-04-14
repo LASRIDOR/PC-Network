@@ -31,7 +31,7 @@ public:
 	Type Front(void);
 	void InsertToTail(Type item);
 	Type DeleteFromTail(void);
-private:
+	void printList(void);
 };
 
 #endif // !__STATICLIST_H
