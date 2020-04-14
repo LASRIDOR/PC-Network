@@ -22,6 +22,7 @@ public:
     virtual ~ColorArray();
 
     void setBlack(int index);
+    bool isWhite(int ComputerID);
     void printAccessibles() const;
     bool operator[](int index) const;
 };

@@ -24,7 +24,7 @@ public:
 
 public:
     List();
-    ~List();
+    virtual ~List();
     List(const List& other);
     List(List&& other);
 

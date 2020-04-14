@@ -1,3 +1,9 @@
+/**
+ * Data structures programming exercise 1
+ * Nadav Suliman - 200041739
+ * Dor Lasri -
+ */
+
 #include "MainHeader.h"
 
 using namespace std;

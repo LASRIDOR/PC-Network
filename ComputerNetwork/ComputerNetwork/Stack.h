@@ -14,7 +14,7 @@ public:
 	Stack();
 	Stack(const Stack& other);
 	Stack(Stack&& other);
-	~Stack();
+	virtual ~Stack();
 	void MakeEmpty();
 	int IsEmpty();
 	void Push(Data item);

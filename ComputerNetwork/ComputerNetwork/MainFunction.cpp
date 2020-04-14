@@ -26,6 +26,7 @@ void accessibleGroup(Network& theNetwork,int numOfComputers,int computerID, Stat
 void makeAccessibleGroupStackVersion(Network& theNetwork, int computerID, ColorArray& Colors, StaticList& StackAccessibleGroup) {
 	Stack S;
 	Data CurrDetailsForRec;
+
 	int line = 0;
 
 	CurrDetailsForRec.ComputerID = computerID;
@@ -37,12 +38,18 @@ void makeAccessibleGroupStackVersion(Network& theNetwork, int computerID, ColorA
 		StackAccessibleGroup.InsertToTail(CurrDetailsForRec.ComputerID);
 		Node* CurrNodeInListComputerPoint = theNetwork[CurrDetailsForRec.ComputerID].getHead();
 		while (CurrNodeInListComputerPoint != nullptr) {
-			CurrDetailsForRec.ComputerID = CurrNodeInListComputerPoint->getComputerID();
-			CurrDetailsForRec.line = ++line;
-			S.Push(CurrDetailsForRec);
-			CurrNodeInListComputerPoint = CurrNodeInListComputerPoint->getNext();
+			if (Colors.isWhite(CurrNodeInListComputerPoint->getComputerID())) {
+				CurrDetailsForRec.ComputerID = CurrNodeInListComputerPoint->getComputerID();
+				CurrDetailsForRec.line = ++line;
+				S.Push(CurrDetailsForRec);
+				CurrNodeInListComputerPoint = CurrNodeInListComputerPoint->getNext();
+			}
 		}
 	}
+}
+
+bool CurrNodeComputerPointIsWhite(Node& CurrNodeInListComputerPoint, ColorArray& Colors) {
+
 }
 
 void findAccessible(Network& network, ColorArray& colorArray, int computerID, StaticList& accessibleGroup) {

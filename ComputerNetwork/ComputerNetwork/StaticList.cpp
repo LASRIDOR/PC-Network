@@ -37,7 +37,7 @@ StaticList::StaticList(const StaticList& other) {
 }
 StaticList::~StaticList() {
 	for (int i = 0; i < StaticListSize;i++) {
-		delete data[i];
+		delete []data[i];
 	}
 	delete[] data;
 }

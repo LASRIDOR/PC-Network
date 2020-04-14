@@ -48,6 +48,15 @@ void ColorArray::printAccessibles() const {
     cout << "}" << endl;
 }
 
+bool ColorArray::isWhite(int ComputerID) {
+    if (this->array[ComputerID] == WHITE) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 bool ColorArray::operator[](int index) const {
     if (index <= size && index >= 0) {
         return this->array[index];

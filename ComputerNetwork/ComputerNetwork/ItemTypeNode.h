@@ -16,7 +16,7 @@ class ItemTypeNode {
 public:
 	ItemTypeNode(int line, int ComputerPoint, ItemTypeNode* nextnode);
 	ItemTypeNode(Data data, ItemTypeNode* next);
-	~ItemTypeNode();
+	virtual ~ItemTypeNode();
 	
 	void setData(int ComputerPoint, int line);
 	void setNext(ItemTypeNode* next);
