@@ -13,7 +13,6 @@ class Node {
 	friend class List;
 public:
 	Node(Computer computer, Node* nextnode);
-	~Node();
 
 	Computer getComputer() const;
 	int getComputerID();
