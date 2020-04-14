@@ -75,4 +75,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\..\..\OneDrive - The Academic College of Tel-Aviv Jaffa - MTA\Documents\מדעי המחשב\שנה ב\סמסטר ב\מבני נתונים - חדש\תרגיל תכנותי\README.txt" />
+  </ItemGroup>
 </Project>

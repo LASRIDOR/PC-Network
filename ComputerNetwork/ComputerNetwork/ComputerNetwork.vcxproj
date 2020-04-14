@@ -160,6 +160,9 @@
     <ClInclude Include="Stack.h" />
     <ClInclude Include="StaticList.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\..\..\OneDrive - The Academic College of Tel-Aviv Jaffa - MTA\Documents\מדעי המחשב\שנה ב\סמסטר ב\מבני נתונים - חדש\תרגיל תכנותי\README.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
