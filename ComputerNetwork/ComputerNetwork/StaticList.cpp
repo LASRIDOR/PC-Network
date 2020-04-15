@@ -18,6 +18,7 @@ StaticList::StaticList(int size_of_data) {
 		data[NEXTPLACE][i] = i + 1;
 	}
 	MAX_SIZE = size_of_data;
+	sizeoflist = 0;
 }
 StaticList::StaticList(const StaticList& other) {
 	this->headfree = other.headfree;
@@ -25,6 +26,7 @@ StaticList::StaticList(const StaticList& other) {
 	this->MAX_SIZE = other.MAX_SIZE;
 	this->tailfree = other.tailfree;
 	this->taillist = other.taillist;
+	this->sizeoflist = other.sizeoflist;
 	data = new Type * [StaticListSize];
 	for (int i = 0; i < StaticListSize; i++) {
 		data[i] = new Type[MAX_SIZE];
@@ -48,6 +50,7 @@ const StaticList& StaticList::operator=(const StaticList& other) {
 		taillist = other.taillist; 
 		tailfree = other.tailfree;
 		MAX_SIZE = other.MAX_SIZE;
+		sizeoflist = other.sizeoflist;
 		data = new Type*[StaticListSize];
 		for (int i = 0; i < StaticListSize; i++) {
 			data[i] = new Type[MAX_SIZE];
@@ -65,9 +68,10 @@ void StaticList::MakeEmpty(void) {
 	this->taillist = -1;
 	this->headfree = 0;
 	this->tailfree = MAX_SIZE - 1;
+	this->sizeoflist = 0;
 }
 int StaticList::IsEmpty(void) {
-	return ((headlist == -1)&&(taillist == -1));
+	return (sizeoflist ==0);
 }
 Type StaticList::Front(void) {
 	if (IsEmpty()) {
@@ -92,19 +96,23 @@ void StaticList::InsertToTail(Type item) {
 		data[NEXTPLACE][taillist] = locNew;
 	}
 	this->taillist = locNew;
+	sizeoflist++;
 } 
-int StaticList::DeleteFromTail(void) {
-	if (IsEmpty()) {
-		cout << "Error: QUEUE EMPTY\n";
+int StaticList::deleteFromlist(int placeInList) {
+	if ((IsEmpty()) && (placeInList > sizeoflist)) {
+		cout << "Error: QUEUE EMPTY\n" << "Or number out of bounds";
 		exit(1);
 	}
-	int locFree = data[NEXTPLACE][taillist];
-	data[NEXTPLACE][taillist] = data[NEXTPLACE][locFree];
+	int index = this->headlist;
+	for (int i = 0; i < placeInList - 1; i++) {
+		index = data[NEXTPLACE][index];
+	}
+	int locFree = data[NEXTPLACE][index];
+	data[NEXTPLACE][locFree] = data[NEXTPLACE][locFree];
 	//data[DATAPLACE][locFree] = ;
 	data[NEXTPLACE][locFree] = headfree;
 	headfree = locFree;
-	this->tailfree = locFree;
-	return locFree;
+	return data[DATAPLACE][locFree];
 }
 
 void StaticList::printList(void) {
@@ -114,4 +122,8 @@ void StaticList::printList(void) {
 		cout << this->data[DATAPLACE][temp] << " ";
 		temp = data[NEXTPLACE][temp];
 	}
+	cout << '/n';
+}
+int StaticList::getSizeOfList(void) {
+	return this->sizeoflist;
 }

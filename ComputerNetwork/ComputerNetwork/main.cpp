@@ -35,4 +35,6 @@ int main() {
     accessibleGroup(theNetwork, numOfComputers, computerToFindAccessible,StackAccessibleGroup, RecAccessibleGroup, colorArrayStack, colorArrayRec);
     colorArrayRec.printAccessibles();
     colorArrayStack.printAccessibles();
+    RecAccessibleGroup.printList();
+    StackAccessibleGroup.printList();
 }

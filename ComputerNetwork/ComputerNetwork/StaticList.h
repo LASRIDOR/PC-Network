@@ -20,6 +20,7 @@ private:
 	int headlist,headfree;
 	int taillist, tailfree;
 	int MAX_SIZE;
+	int sizeoflist;
 
 public:
 	StaticList(int size_of_data = 100);
@@ -30,8 +31,9 @@ public:
 	int IsEmpty(void);
 	Type Front(void);
 	void InsertToTail(Type item);
-	Type DeleteFromTail(void);
+	int deleteFromlist(int placeInList);
 	void printList(void);
+	int getSizeOfList(void);
 };
 
 #endif // !__STATICLIST_H
