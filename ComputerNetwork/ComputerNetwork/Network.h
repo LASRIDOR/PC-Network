@@ -9,6 +9,9 @@
 #include <ostream>
 #include "List.h"
 
+/**
+ * Data structure - An array of computer-lists.
+ */
 class Network {
 private:
     List* connections;
