@@ -10,6 +10,9 @@
 #define BLACK   true
 #define WHITE   false
 
+/**
+ * An array of booleans where BLACK = true and WHITE = false.
+ */
 class ColorArray {
 private:
     bool *array;

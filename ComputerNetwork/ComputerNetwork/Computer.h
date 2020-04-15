@@ -7,6 +7,9 @@
 
 #include <ostream>
 
+/**
+ * A Class containing an int, acting as a computer in a network.
+ */
 class Computer {
 
 private:

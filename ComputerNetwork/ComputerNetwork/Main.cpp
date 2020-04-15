@@ -17,24 +17,22 @@ int main() {
     cin >> numOfComputers;
     cin >> numOfConnections;
 
-    ColorArray colorArrayRec(numOfComputers);
+    ColorArray colorArrayRec(numOfComputers);       //Creating a colorArray for each version of the findAccessible function
     ColorArray colorArrayStack(numOfComputers);
 
-    Network theNetwork(numOfConnections, numOfComputers);
-    initNetwork(theNetwork, numOfConnections);
+    Network theNetwork(numOfConnections, numOfComputers);   //Allocating a new array of lists with size of numOfComputers.
+    initNetwork(theNetwork, numOfConnections);          //Initiating the network.
 
-    cin >> computerToFindAccessible;
+    cin >> computerToFindAccessible;                        //Testing if the computer is in the right range.
     if (computerToFindAccessible < 1 || computerToFindAccessible > numOfComputers) {
-        cout << "Computer not found!";
+        cout << "no such computer " << computerToFindAccessible;
         exit(1);
     }
 
     StaticList StackAccessibleGroup;
     StaticList RecAccessibleGroup;
 
-    accessibleGroup(theNetwork, numOfComputers, computerToFindAccessible,StackAccessibleGroup, RecAccessibleGroup, colorArrayStack, colorArrayRec);
-    colorArrayRec.printAccessibles();
-    colorArrayStack.printAccessibles();
+    accessibleGroup(theNetwork, computerToFindAccessible,StackAccessibleGroup, RecAccessibleGroup, colorArrayStack, colorArrayRec);
+    StackAccessibleGroup.printList();       //printing results.
     RecAccessibleGroup.printList();
-    StackAccessibleGroup.printList();
 }

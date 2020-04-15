@@ -17,7 +17,6 @@ public:
 	ItemTypeNode(int line, int ComputerPoint, ItemTypeNode* nextnode);
 	ItemTypeNode(Data data, ItemTypeNode* next);
 	virtual ~ItemTypeNode();
-	
 	void setData(int ComputerPoint, int line);
 	void setNext(ItemTypeNode* next);
 	Data getData()const;
