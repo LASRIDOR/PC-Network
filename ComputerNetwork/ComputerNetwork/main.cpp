@@ -25,7 +25,7 @@ int main() {
 
     cin >> computerToFindAccessible;
     if (computerToFindAccessible < 1 || computerToFindAccessible > numOfComputers) {
-        cout << "Computer not found!";
+        cout << "no such computer " << computerToFindAccessible;
         exit(1);
     }
 
@@ -33,6 +33,6 @@ int main() {
     StaticList RecAccessibleGroup;
 
     accessibleGroup(theNetwork, numOfComputers, computerToFindAccessible,StackAccessibleGroup, RecAccessibleGroup, colorArrayStack, colorArrayRec);
-    colorArrayRec.printAccessibles();
-    colorArrayStack.printAccessibles();
+    StackAccessibleGroup.printList();
+    RecAccessibleGroup.printList();
 }

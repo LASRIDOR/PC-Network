@@ -38,16 +38,6 @@ void ColorArray::setBlack(int index) {
     array[index] = BLACK;
 }
 
-void ColorArray::printAccessibles() const {
-    cout << "{ ";
-    for (int i = 1; i <= size; i++) {
-        if (array[i] == BLACK) {
-            cout << i << " ";
-        }
-    }
-    cout << "}" << endl;
-}
-
 bool ColorArray::isWhite(int ComputerID) {
     if (this->array[ComputerID] == WHITE) {
         return true;
@@ -55,6 +45,15 @@ bool ColorArray::isWhite(int ComputerID) {
     else {
         return false;
     }
+}
+
+void ColorArray::printAccessibles() const {
+    for (int i = 1; i <= size; i++) {
+        if (array[i] == BLACK) {
+            cout << i << " ";
+        }
+    }
+    cout << '\n';
 }
 
 bool ColorArray::operator[](int index) const {

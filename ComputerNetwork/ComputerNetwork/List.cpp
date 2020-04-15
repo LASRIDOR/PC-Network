@@ -72,49 +72,6 @@ void List::addToTail(Computer computer) {
     }
 }
 
-void List::deleteNode(Node *toDelete) {
-    //Todo: complete this.
-}
-
-/*
-bool List::DeleteNodeFromList(Type TypeToDeleteFromList) {
-    Node* PrevOfCurr = nullptr;
-    Node *CurrNodeInList = head;
-
-    if(isEmpty()) {
-        return false;
-    } else {
-        while(CurrNodeInList) {
-            if(NumToDeleteFromList == CurrNodeInList->computer) {
-                if(!PrevOfCurr) {
-                    head = CurrNodeInList->next;
-                    delete CurrNodeInList;
-                } else if(!CurrNodeInList->next) {
-                    PrevOfCurr->next = CurrNodeInList->next;
-                    tail = PrevOfCurr;
-                    delete CurrNodeInList;
-                } else {
-                    PrevOfCurr->next = CurrNodeInList->next;
-                    delete CurrNodeInList;
-                }
-                return true;
-            }
-            PrevOfCurr = CurrNodeInList;
-            CurrNodeInList = CurrNodeInList->next;
-        }
-    }
-    return false;
-}*/
-
-/*bool List::TypeIsInList(const Node& NewNode) {
-    Node* NodeInList = head;
-    while (NodeInList) {
-        if (NewNode.computer == NodeInList->computer)
-            return true;
-        NodeInList = NodeInList->next;
-    }
-    return false;
-}*/
 
 Node*List::find(Computer computerToFind) {
     Node *NodeInList = head;

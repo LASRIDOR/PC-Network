@@ -10,20 +10,19 @@ using namespace std;
 
 
 class Node {
-	friend class List;
+    friend class List;
 public:
-	Node(Computer computer, Node* nextnode);
-	~Node();
+    Node(Computer computer, Node* nextnode);
 
-	Computer getComputer() const;
-	int getComputerID();
+    Computer getComputer() const;
+    int getComputerID();
     Node *getNext() const;
-
+    Node *DeleteAfter();
     void printNode();
 
 private:
-	Computer computer;
-	Node* next;
+    Computer computer;
+    Node* next;
 };
 
 #endif // !__NODE_H

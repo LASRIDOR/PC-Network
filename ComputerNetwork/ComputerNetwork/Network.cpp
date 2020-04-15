@@ -24,13 +24,21 @@ Network::Network(Network&& other) {
 
     other.connections = nullptr;
 }
-Network::~Network() { 
+Network::~Network() {
     delete[] this->connections;
 }
 
 void Network::newConnection(Computer from, Computer to) {
-    if (from > numOfComputers || to > numOfComputers || from == to) {
-        cout << "Invalid input!";
+    if (from > numOfComputers ) {
+        cout << "no such computer " << from;
+        exit(1);
+    }
+    if (to > numOfComputers) {
+        cout << "no such computer " << to;
+        exit(1);
+    }
+    if (from == to) {
+        cout << "connection to the same computer";
         exit(1);
     }
     connections[from.getID()].addToTail(to);
