@@ -53,6 +53,10 @@ bool List::isEmpty() const {
     return head == nullptr;
 }
 
+/**
+ * Adds a new node to the tail of the list.
+ * @param newNodeToAdd
+ */
 void List::addToTail(Node* newNodeToAdd) {
     if (isEmpty()) {
         head = tail = newNodeToAdd;
@@ -62,6 +66,10 @@ void List::addToTail(Node* newNodeToAdd) {
     }
 }
 
+/**
+ * Adds a new computer to the end of the list. Creates a node from the computer. Overloads the other addToTail.
+ * @param computer
+ */
 void List::addToTail(Computer computer) {
     Node* newNode = new Node(computer, nullptr);
     if (isEmpty()) {
@@ -73,6 +81,11 @@ void List::addToTail(Computer computer) {
 }
 
 
+/**
+ * Finds computerToFind in the list by traversing the list.
+ * @param computerToFind
+ * @return Found computer, returns null if not found.
+ */
 Node*List::find(Computer computerToFind) {
     Node *NodeInList = head;
     while (NodeInList) {
