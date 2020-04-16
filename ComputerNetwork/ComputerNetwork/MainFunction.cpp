@@ -44,30 +44,70 @@ void accessibleGroup(Network& theNetwork, int computerID, StaticList& StackAcces
  * @param Colors - Color array to fill
  * @param StackAccessibleGroup - The static list to fill.
  */
+
 void makeAccessibleGroupStackVersion(Network& theNetwork, int computerID, ColorArray& Colors, StaticList& StackAccessibleGroup) {
     Stack S;
     Data CurrDetailsForRec;
-
-    int line = 0;
+    Data nextDetailsForRec;
+    int line = START;
+    Node* CurrNodeInListComputerPoint;
 
     CurrDetailsForRec.ComputerID = computerID;
     CurrDetailsForRec.line = START;
+    CurrNodeInListComputerPoint = theNetwork[CurrDetailsForRec.ComputerID].getHead();
     S.Push(CurrDetailsForRec);
     while (!S.IsEmpty()) {
         CurrDetailsForRec = S.Pop();
-        Colors.setBlack(CurrDetailsForRec.ComputerID);
-        StackAccessibleGroup.InsertToTail(CurrDetailsForRec.ComputerID);
-        Node* CurrNodeInListComputerPoint = theNetwork[CurrDetailsForRec.ComputerID].getHead();
-        while (CurrNodeInListComputerPoint != nullptr) {
-            if (Colors.isWhite(CurrNodeInListComputerPoint->getComputerID())) {
-                CurrDetailsForRec.ComputerID = CurrNodeInListComputerPoint->getComputerID();
-                CurrDetailsForRec.line = ++line;
+        if (CurrDetailsForRec.line == 0) {
+            if (Colors.isWhite(CurrDetailsForRec.ComputerID)) {
+                Colors.setBlack(CurrDetailsForRec.ComputerID);
+                StackAccessibleGroup.InsertToTail(CurrDetailsForRec.ComputerID);
+                CurrDetailsForRec.line = AFTER_START;
+                CurrNodeInListComputerPoint = theNetwork[CurrDetailsForRec.ComputerID].getHead();
+                if (CurrNodeInListComputerPoint) {
+                    if (CurrNodeInListComputerPoint->getNext()) {
+                        CurrDetailsForRec.NextNodeInListComputerPoint = CurrNodeInListComputerPoint->getNext();
+                    }
+                    else {
+                        CurrDetailsForRec.NextNodeInListComputerPoint = nullptr;
+                    }
+                }
+                else {
+                    CurrDetailsForRec.NextNodeInListComputerPoint = nullptr;
+                }
+                S.Push(CurrDetailsForRec);
+
+                if (CurrNodeInListComputerPoint) {
+                    if (Colors.isWhite(CurrNodeInListComputerPoint->getComputerID())) {
+                        nextDetailsForRec.ComputerID = CurrNodeInListComputerPoint->getComputerID();
+                        nextDetailsForRec.line = START;
+                        nextDetailsForRec.NextNodeInListComputerPoint = nullptr;
+                        S.Push(nextDetailsForRec);
+                    }
+                }
+            }
+        }
+        else if (CurrDetailsForRec.line == 1) {
+            if (CurrDetailsForRec.NextNodeInListComputerPoint) {
+                CurrDetailsForRec.line = AFTER_START;
+                nextDetailsForRec.ComputerID = CurrDetailsForRec.NextNodeInListComputerPoint->getComputerID();
+                CurrDetailsForRec.NextNodeInListComputerPoint = CurrDetailsForRec.NextNodeInListComputerPoint->getNext();
+                S.Push(CurrDetailsForRec);
+                nextDetailsForRec.line = START;
+                nextDetailsForRec.NextNodeInListComputerPoint = nullptr;
+                S.Push(nextDetailsForRec);
+            }
+            else {
+                CurrDetailsForRec.line = AFTER_SECOND;
                 S.Push(CurrDetailsForRec);
             }
-            CurrNodeInListComputerPoint = CurrNodeInListComputerPoint->getNext();
+        }
+        else {
+            //do nothing
         }
     }
 }
+
 
 /**
  * Finds recursively the accessible group of computerID on network theNetwork using colorArray and inputting the group
@@ -81,7 +121,6 @@ void findAccessible(Network& network, ColorArray& colorArray, int computerID, St
     colorArray.setBlack(computerID);
     accessibleGroup.InsertToTail(computerID);
     Node* connectedComputerNode = network[computerID].getHead();
-
     while (connectedComputerNode) {
         int connectedComputerNodeID = connectedComputerNode->getComputer().getID();
         if (colorArray[connectedComputerNodeID] == WHITE) {
@@ -90,3 +129,72 @@ void findAccessible(Network& network, ColorArray& colorArray, int computerID, St
         connectedComputerNode = connectedComputerNode->getNext();
     }
 }
+
+
+/*
+void makeAccessibleGroupStackVersion(Network& theNetwork, int computerID, ColorArray& Colors, StaticList& StackAccessibleGroup) {
+    Stack S; // Stack which simulates the recursion. Item Curr; // Values of current “recursive call” Item Next; // Values of next “recursive call”.
+    Data CurrDetailsForRec;
+    Data nextDetailsForRec;
+    int line = START;
+
+    CurrDetailsForRec.ComputerID = computerID;
+    CurrDetailsForRec.line = START;
+    S.Push(CurrDetailsForRec);
+    //Colors.setBlack(CurrDetailsForRec.ComputerID);
+    //StackAccessibleGroup.InsertToTail(CurrDetailsForRec.ComputerID);
+    while (!S.IsEmpty()) {
+        CurrDetailsForRec = S.Pop();
+        Node* CurrNodeInListComputerPoint = theNetwork[CurrDetailsForRec.ComputerID].getHead();
+        if (CurrDetailsForRec.line == 0) {
+            if (Colors.isWhite(CurrDetailsForRec.ComputerID)) {
+               // Colors.setBlack(CurrDetailsForRec.ComputerID);
+               // StackAccessibleGroup.InsertToTail(CurrDetailsForRec.ComputerID);
+                CurrDetailsForRec.line = ++line;
+                S.Push(CurrDetailsForRec);
+                while (CurrNodeInListComputerPoint != nullptr) {
+                    nextDetailsForRec.ComputerID = CurrNodeInListComputerPoint->getComputerID();
+                    nextDetailsForRec.line = START;
+                    S.Push(nextDetailsForRec);
+                    CurrNodeInListComputerPoint = CurrNodeInListComputerPoint->getNext();
+                }
+                //Colors.setBlack(CurrDetailsForRec.ComputerID);
+                //StackAccessibleGroup.InsertToTail(CurrDetailsForRec.ComputerID);
+            }
+        }
+        else if (CurrDetailsForRec.line != 0) {
+            if (Colors.isWhite(CurrDetailsForRec.ComputerID)) {
+                Colors.setBlack(CurrDetailsForRec.ComputerID);
+                StackAccessibleGroup.InsertToTail(CurrDetailsForRec.ComputerID);
+            }
+        }
+    }
+}
+*/
+
+/*
+void makeAccessibleGroupStackVersion(Network& theNetwork, int computerID, ColorArray& Colors, StaticList& StackAccessibleGroup) {
+    Stack S;
+    Data CurrDetailsForRec;
+    int line = 0;
+
+    CurrDetailsForRec.ComputerID = computerID;
+    CurrDetailsForRec.line = START;
+    S.Push(CurrDetailsForRec);
+    while (!S.IsEmpty()) {
+        CurrDetailsForRec = S.Pop();
+        Colors.setBlack(CurrDetailsForRec.ComputerID);
+        StackAccessibleGroup.InsertToTail(CurrDetailsForRec.ComputerID);
+        Node* CurrNodeInListComputerPoint = theNetwork[CurrDetailsForRec.ComputerID].getHead();
+        while (CurrNodeInListComputerPoint != nullptr) {
+            if (Colors.isWhite(CurrNodeInListComputerPoint->getComputerID())) {
+                S.Push(CurrDetailsForRec);
+                CurrDetailsForRec.ComputerID = CurrNodeInListComputerPoint->getComputerID();
+                CurrDetailsForRec.line = ++line;
+                S.Push(CurrDetailsForRec);
+            }
+            CurrNodeInListComputerPoint = CurrNodeInListComputerPoint->getNext();
+        }
+    }
+}
+*/

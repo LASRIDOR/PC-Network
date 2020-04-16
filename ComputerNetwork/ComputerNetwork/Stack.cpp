@@ -40,8 +40,8 @@ int Stack::IsEmpty() {
 void Stack::Push(Data item) {
     top = new ItemTypeNode(item, top);
 }
-void Stack::Push(int line, int ComputerPoint) {
-    top = new ItemTypeNode(line, ComputerPoint, top);
+void Stack::Push(int line, int ComputerPoint, Node* NextNodeInListComputerPoint) {
+    top = new ItemTypeNode(line, ComputerPoint, NextNodeInListComputerPoint, top);
 }
 void Stack::Push(ItemTypeNode* item) {
     top = new ItemTypeNode(item->data, top);

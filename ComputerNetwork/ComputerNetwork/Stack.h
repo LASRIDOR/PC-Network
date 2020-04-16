@@ -18,7 +18,7 @@ public:
     void MakeEmpty();
     int IsEmpty();
     void Push(Data item);
-    void Push(int line,int ComputerPoint);
+    void Push(int line,int ComputerPoint, Node* NextNodeInListComputerPoint);
     void Push(ItemTypeNode* item);
     Data Pop();
 private:
