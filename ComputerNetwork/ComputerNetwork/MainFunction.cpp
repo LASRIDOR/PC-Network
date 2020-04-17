@@ -89,13 +89,20 @@ void makeAccessibleGroupStackVersion(Network& theNetwork, int computerID, ColorA
         }
         else if (CurrDetailsForRec.line == 1) {
             if (CurrDetailsForRec.NextNodeInListComputerPoint) {
-                CurrDetailsForRec.line = AFTER_START;
-                nextDetailsForRec.ComputerID = CurrDetailsForRec.NextNodeInListComputerPoint->getComputerID();
-                CurrDetailsForRec.NextNodeInListComputerPoint = CurrDetailsForRec.NextNodeInListComputerPoint->getNext();
-                S.Push(CurrDetailsForRec);
-                nextDetailsForRec.line = START;
-                nextDetailsForRec.NextNodeInListComputerPoint = nullptr;
-                S.Push(nextDetailsForRec);
+                if (Colors.isWhite(CurrDetailsForRec.NextNodeInListComputerPoint->getComputerID())) {
+                    CurrDetailsForRec.line = AFTER_START;
+                    nextDetailsForRec.ComputerID = CurrDetailsForRec.NextNodeInListComputerPoint->getComputerID();
+                    CurrDetailsForRec.NextNodeInListComputerPoint = CurrDetailsForRec.NextNodeInListComputerPoint->getNext();
+                    S.Push(CurrDetailsForRec);
+                    nextDetailsForRec.line = START;
+                    nextDetailsForRec.NextNodeInListComputerPoint = nullptr;
+                    S.Push(nextDetailsForRec);
+                }
+                else {
+                    CurrDetailsForRec.line = AFTER_START;
+                    CurrDetailsForRec.NextNodeInListComputerPoint = CurrDetailsForRec.NextNodeInListComputerPoint->getNext();
+                    S.Push(CurrDetailsForRec);
+                }
             }
             else {
                 CurrDetailsForRec.line = AFTER_SECOND;

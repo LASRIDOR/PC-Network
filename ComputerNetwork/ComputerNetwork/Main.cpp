@@ -1,7 +1,7 @@
 /**
  * Data structures programming exercise 1
  * Nadav Suliman - 200041739
- * Dor Lasri -
+ * Dor Lasri - 313426975
  */
 
 #include "MainHeader.h"
@@ -31,6 +31,7 @@ int main() {
 
     StaticList StackAccessibleGroup;
     StaticList RecAccessibleGroup;
+
 
     accessibleGroup(theNetwork, computerToFindAccessible,StackAccessibleGroup, RecAccessibleGroup, colorArrayStack, colorArrayRec);
     StackAccessibleGroup.printList();       //printing results.

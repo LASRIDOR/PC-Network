@@ -14,8 +14,10 @@ StaticList::StaticList(int size_of_data) {
             data[DATAPLACE][i] = '\n';
             data[NEXTPLACE][i] = -1;
         }
-        data[DATAPLACE][i] = '\n';
-        data[NEXTPLACE][i] = i + 1;
+        else {
+            data[DATAPLACE][i] = '\n';
+            data[NEXTPLACE][i] = i + 1;
+        }
     }
     MAX_SIZE = size_of_data;
     sizeoflist = 0;
@@ -71,7 +73,7 @@ void StaticList::MakeEmpty(void) {
     this->sizeoflist = 0;
 }
 int StaticList::IsEmpty(void) {
-    return (sizeoflist ==0);
+    return (this->headlist == -1 && this->taillist == -1);
 }
 Type StaticList::Front(void) {
     if (IsEmpty()) {
@@ -83,6 +85,7 @@ Type StaticList::Front(void) {
 void StaticList::InsertToTail(Type item) {
     if (headfree == -1) {
         cout << "Error: QUEUE IS FULL\n";
+        exit(1);
     }
     int locNew = headfree;
     headfree = data[NEXTPLACE][headfree];
@@ -98,21 +101,24 @@ void StaticList::InsertToTail(Type item) {
     this->taillist = locNew;
     sizeoflist++;
 }
+/**
+ * Data structure - An array of computer-lists.
+ */
 int StaticList::deleteFromlist(int placeInList) {
     if ((IsEmpty()) && (placeInList > sizeoflist)) {
         cout << "Error: QUEUE EMPTY\n" << "Or number out of bounds";
         exit(1);
     }
     int index = this->headlist;
-    for (int i = 0; i < placeInList - 1; i++) {
+    for (int i = 0; i < placeInList - 1; i++) { // to find the the node that the his next points to the placeInList that we want to delete
         index = data[NEXTPLACE][index];
     }
     int locFree = data[NEXTPLACE][index];
-    data[NEXTPLACE][locFree] = data[NEXTPLACE][locFree];
+    int value = data[DATAPLACE][locFree];
     //data[DATAPLACE][locFree] = ;
     data[NEXTPLACE][locFree] = headfree;
     headfree = locFree;
-    return data[DATAPLACE][locFree];
+    return value;
 }
 
 void StaticList::printList(void) {

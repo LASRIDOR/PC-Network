@@ -37,6 +37,10 @@ void Stack::MakeEmpty() {
 int Stack::IsEmpty() {
     return (top == nullptr);
 }
+/**
+ * push Func
+ * 3 different ways to get the data
+ */
 void Stack::Push(Data item) {
     top = new ItemTypeNode(item, top);
 }
