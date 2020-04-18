@@ -32,6 +32,7 @@ int main() {
     StaticList StackAccessibleGroup;
     StaticList RecAccessibleGroup;
 
+
     accessibleGroup(theNetwork, computerToFindAccessible,StackAccessibleGroup, RecAccessibleGroup, colorArrayStack, colorArrayRec);
     StackAccessibleGroup.printList();       //printing results.
     RecAccessibleGroup.printList();

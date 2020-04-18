@@ -43,6 +43,15 @@ void accessibleGroup(Network& theNetwork, int computerID, StaticList& StackAcces
  * @param computerID - Computer whose accessible group we want
  * @param Colors - Color array to fill
  * @param StackAccessibleGroup - The static list to fill.
+ * @param CurrNodeInListComputerPoint - for the list for the computerID thats is the CurrDetailsForRec
+ * CurrDetailsForRec - include computerID,line,CurrNodeInListComputerPoint (pointer) for every recursion
+ * when line is START it mean that the recursion for the specific computerID is the first recursion
+ * and needs to be paint to black and then to take care of the list that's when the CurrNodeInListComputerPoint
+ * comes in because when the line is at AFTER_START it means that the computerID has been taking care of and the
+ * list hasn't and then we taking care of the CurrNodeInListComputerPoint and after that we will take care of
+ * CurrNodeInListComputerPoint->next until CurrNodeInListComputerPoint will be worth null and in that point we will
+ * finish taking care of the computerID and its list JUST AT THE SAME ORDER AS THE RECURSION WORKS 
+ * first paints the computerID and its list and then move to the next NODE
  */
 
 void makeAccessibleGroupStackVersion(Network& theNetwork, int computerID, ColorArray& Colors, StaticList& StackAccessibleGroup) {
