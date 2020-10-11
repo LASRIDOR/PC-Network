@@ -32,14 +32,13 @@ int main() {
     StaticList StackAccessibleGroup;
     StaticList RecAccessibleGroup;
 
-
     accessibleGroup(theNetwork, computerToFindAccessible,StackAccessibleGroup, RecAccessibleGroup, colorArrayStack, colorArrayRec);
     StackAccessibleGroup.printList();       //printing results.
     RecAccessibleGroup.printList();
 }
 
 /**
- * Tests which we've fucked up on:
+ * Tests example:
  *
  * 5 5 1 4 3 2 3 5 2 4 4 5 3
  * 7 8 1 4 1 5 2 3 4 6 4 7 6 4 6 3 7 5 1
